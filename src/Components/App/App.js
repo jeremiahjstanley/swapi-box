@@ -2,6 +2,18 @@ import React, { Component } from 'react';
 import './App.css';
 
 class App extends Component {
+  constructor() {
+    super()
+    this.state = {
+      cards: [{ name: 'Alderaan',
+                terrain: 'grasslands, mountains',
+                population: '2000000000',
+                climate: 'temperate',
+                residents: [ 'Leia Organa' ],
+                favorite: false }]
+              }
+  }
+
   render() {
     return (
       <div className="App">
