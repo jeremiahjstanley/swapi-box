@@ -14,10 +14,14 @@ class App extends Component {
                 population: '2000000000',
                 climate: 'temperate',
                 residents: [ 'Leia Organa' ],
-                favorite: false }],
-      scroll: {}
-    }
-  }
+                favorite: false },
+                type: 'people'],
+      scroll: {},
+      buttons: [{name: 'people'},
+                {name: 'planets'},
+                {name: 'vehicles'}]
+    };
+  };
 
   componentDidMount() {
     fetch('https://swapi.co/api/films/')
@@ -26,13 +30,14 @@ class App extends Component {
         this.setState({ scroll: scroll(parsedData)})
       })
       .catch(error => console.error('Error:', error))
-  }
+  };
 
   render() {
     return (
       <div className="App">
         <h1 className="app-header">SWAPI-Box</h1>
         <Scroll scroll={this.state.scroll}/>
+        <Header buttons={this.state.buttons}
       </div>
     );
   }
