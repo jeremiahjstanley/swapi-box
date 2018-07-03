@@ -23,6 +23,10 @@ class App extends Component {
     };
   };
 
+  displayCards = () => {
+    console.log('hi')
+  }
+
   componentDidMount() {
     fetch('https://swapi.co/api/films/')
       .then(data => data.json())
@@ -37,7 +41,10 @@ class App extends Component {
       <div className="App">
         <h1 className="app-header">SWAPI-Box</h1>
         <Scroll scroll={this.state.scroll}/>
-        <Header buttons={this.state.buttons}
+        <Header 
+          buttons={this.state.buttons}
+          displayCards={this.displayCards}
+        />
       </div>
     );
   }
