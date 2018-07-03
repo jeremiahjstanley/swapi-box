@@ -18,13 +18,11 @@ class App extends Component {
     };
   };
 
-  displayCards = (type) => {
-    fetch(`https://swapi.co/api/${type}/`)
-      .then(data => data.json())
-      .then(parsedData => {
-        this.setState({cards: this.fetchData(type, parsedData)})
-      })
-      .catch(error => console.error('Error:', error))
+  displayCards = async (type) => {
+    const url = `https://swapi.co/api/${type}/`
+    const response = await fetch(url);
+    const data = await response.json();
+    this.setState({cards: this.fetchData(type, data)})
   }
 
   fetchData = (type, parsedData) => {
@@ -43,13 +41,11 @@ class App extends Component {
     }
   }
 
-  componentDidMount() {
-    fetch('https://swapi.co/api/films/')
-      .then(data => data.json())
-      .then(parsedData => {
-        this.setState({ scroll: scroll(parsedData)})
-      })
-      .catch(error => console.error('Error:', error))
+  async componentDidMount() {
+    const url = 'https://swapi.co/api/films/'
+    const response = await fetch(url);
+    const data = await response.json();
+    this.setState({ scroll: scroll(data)})
   };
 
   render() {
