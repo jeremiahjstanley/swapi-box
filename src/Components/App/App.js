@@ -19,33 +19,38 @@ class App extends Component {
   };
 
   displayCards = async (type) => {
-    const url = `https://swapi.co/api/${type}/`
-    const response = await fetch(url);
-    const data = await response.json();
-    this.setState({cards: this.fetchData(type, data)})
+    try {
+      const url = `https://swapi.co/api/${type}/`
+      const response = await fetch(url);
+      const data = await response.json();
+      this.setState({cards: this.fetchData(type, data)})
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   fetchData = (type, parsedData) => {
         switch (type) {
       case 'people':
          return people(parsedData)
-        break;
       case 'planets':
           return planets(parsedData)
-        break;
       case 'vehicles':
           return vehicles(parsedData)
-        break;
       default:
         console.log('error');
     }
   }
 
   async componentDidMount() {
-    const url = 'https://swapi.co/api/films/'
-    const response = await fetch(url);
-    const data = await response.json();
-    this.setState({ scroll: scroll(data)})
+    try {
+      const url = 'https://swapi.co/api/films/'
+      const response = await fetch(url);
+      const data = await response.json();
+      this.setState({ scroll: scroll(data)})
+    } catch (error) {
+      console.error(error)
+    }
   };
 
   render() {
