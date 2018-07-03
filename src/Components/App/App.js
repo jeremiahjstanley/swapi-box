@@ -12,9 +12,9 @@ class App extends Component {
       scroll: {},
       cards: [],
       favorites: [],
-      buttons: [{name: 'people'},
-                {name: 'planets'},
-                {name: 'vehicles'}]
+      buttons: [{name: 'people', active: false},
+                {name: 'planets', active: false},
+                {name: 'vehicles', active: false}]
     };
   };
 
@@ -22,7 +22,7 @@ class App extends Component {
     fetch(`https://swapi.co/api/${type}/`)
       .then(data => data.json())
       .then(parsedData => {
-        this.setState( {[type]: this.fetchData(type, parsedData)})
+        this.setState({cards: this.fetchData(type, parsedData)})
       })
       .catch(error => console.error('Error:', error))
   }
