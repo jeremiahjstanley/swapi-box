@@ -16,22 +16,41 @@ export const scroll = (data) => {
 }
 
 export const people = (data) => {
-  const characters = data.results.map(character => {
+  const people = data.results.map(person => {
     return {
-            name: character.name,
-            homeworld: character.homeworld,
-            species: character.species,
-            population: character.homeworld,
+            name: person.name,
+            homeworld: person.homeworld,
+            species: person.species,
+            population: person.homeworld,
             favorite: false
           }
   })
-  return characters;
+  return people;
 }
 
 export const planets = (data) => {
-  console.log(data)
+  const planets = data.results.map(planet => {
+    return {
+      name: planet.name,
+      terrain: planet.terrain,
+      population: planet.population,
+      climate: planet.climate,
+      residents: planet.residents,
+      favorite: false
+    }
+  })
+  return planets
 }
 
 export const vehicles = (data) => {
-  console.log(data)
+  const vehicles = data.results.map(vehicle => {
+    return {
+            name: vehicle.name,
+            model: vehicle.model,
+            vehicleClass: vehicle.vehicle_class,
+            numberOfPassengers: parseInt(vehicle.crew) + parseInt(vehicle.passengers),
+            favorite: false
+          }  
+  })
+  return vehicles
 }
