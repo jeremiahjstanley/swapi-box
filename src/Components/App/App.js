@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import Scroll from '../Scroll/Scroll'
+import Header from '../Header/Header'
+import CardContainer from '../CardContainer/CardContainer'
 import './App.css';
 
 class App extends Component {
@@ -10,7 +13,7 @@ class App extends Component {
                 population: '2000000000',
                 climate: 'temperate',
                 residents: [ 'Leia Organa' ],
-                favorite: false }]
+                favorite: false }],
       scroll: {}
     }
   }
@@ -25,6 +28,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <h1 className="app-header">SWAPI-Box</h1>
         <Scroll scroll={this.state.scroll}/>
         <Header/>
         <CardContainer cards={this.state.cards}/>
