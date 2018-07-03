@@ -30,8 +30,6 @@ class App extends Component {
       <div className="App">
         <h1 className="app-header">SWAPI-Box</h1>
         <Scroll scroll={this.state.scroll}/>
-        <Header/>
-        <CardContainer cards={this.state.cards}/>
       </div>
     );
   }
