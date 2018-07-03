@@ -1,4 +1,6 @@
 import React from 'react';
+import './CardContainer.css'
+import PropTypes from 'prop-types'
 
 const CardContainer = ({cards}) => {
 
@@ -7,7 +9,7 @@ const CardContainer = ({cards}) => {
       <Card
         key={Date.now()}
         {...card}
-      />;
+      />
     )
   })
 
@@ -16,6 +18,10 @@ const CardContainer = ({cards}) => {
     {containerCards}
     </div>
   )
+}
+
+CardContainer.propTypes = {
+  cards: PropTypes.array.isRequired
 }
 
 export default CardContainer;
