@@ -3,16 +3,18 @@ import './Header.css'
 
 const Header = ({buttons, displayCards}) => {
 
-  const handleClick = (type) => {
-    displayCards(type);
+  const handleClick = (button) => {
+    button.active = true;
+    displayCards(button.name);
   }
 
 
   const clickButtons = buttons.map((button, index) => {
     return (
       <button
+        className= {button.active ? 'active' : ''}
         key={index}
-        onClick={() => {handleClick(button.name)}}
+        onClick={() => {handleClick(button)}}
       >
         {button.name}
       </button>
