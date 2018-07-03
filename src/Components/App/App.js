@@ -2,29 +2,45 @@ import React, { Component } from 'react';
 import Scroll from '../Scroll/Scroll'
 import Header from '../Header/Header'
 import CardContainer from '../CardContainer/CardContainer'
-import { scroll } from './helper.js'
+import { scroll, people, planets, vehicles } from './helper.js'
 import './App.css';
 
 class App extends Component {
   constructor() {
     super()
     this.state = {
-      cards: [{ name: 'Alderaan',
-                terrain: 'grasslands, mountains',
-                population: '2000000000',
-                climate: 'temperate',
-                residents: [ 'Leia Organa' ],
-                favorite: false },
-                type: 'people'],
       scroll: {},
+      cards: [],
+      favorites: [],
       buttons: [{name: 'people'},
                 {name: 'planets'},
                 {name: 'vehicles'}]
     };
   };
 
-  displayCards = () => {
-    console.log('hi')
+  displayCards = (type) => {
+    fetch(`https://swapi.co/api/${type}/`)
+      .then(data => data.json())
+      .then(parsedData => {
+        this.setState( {[type]: this.fetchData(type, parsedData)})
+      })
+      .catch(error => console.error('Error:', error))
+  }
+
+  fetchData = (type, parsedData) => {
+        switch (type) {
+      case 'people':
+         return people(parsedData)
+        break;
+      case 'planets':
+          return planets(parsedData)
+        break;
+      case 'vehicles':
+          return vehicles(parsedData)
+        break;
+      default:
+        console.log('error');
+    }
   }
 
   componentDidMount() {
