@@ -42,7 +42,10 @@ const CardContainer = ({cards, error, addToFavorites, removeFromFavorites}) => {
 }
 
 CardContainer.propTypes = {
-  cards: PropTypes.array.isRequired
+  cards: PropTypes.array.isRequired,
+  error: PropTypes.object,
+  addToFavorites: PropTypes.func.isRequired,
+  removeFromFavorites: PropTypes.func.isRequired
 }
 
 export default CardContainer;
