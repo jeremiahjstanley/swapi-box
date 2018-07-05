@@ -1,7 +1,11 @@
 
+const getNumber = () => {
+  return Math.floor(Math.random() * 7 + 1)
+}
+
 export const scroll = (data) => {
   const scrollInfo = data.results.reduce((scrollInfo, film) => {
-      if (film.title === "A New Hope") {
+      if (film.episode_id === getNumber()) {
         scrollInfo = {
                       title: film.title,
                       releaseDate: film.release_date,
@@ -17,7 +21,6 @@ export const people = (data) => {
   const people = data.results.map(async person => {
     const homeworld = await fetchData(person.homeworld)
     const species = await fetchData(person.species)
-    console.log(homeworld, species)
     return {
             name: person.name,
             homeworld: homeworld.name,
@@ -26,7 +29,6 @@ export const people = (data) => {
             favorite: false
           }
   })
-
   return Promise.all(people);
 }
 
@@ -52,7 +54,7 @@ export const planets = (data) => {
       favorite: false
     }
   })
-  return planets
+  return Promise.all(planets);
 }
 
 const fetchResidents = (residents) => {
