@@ -4,8 +4,10 @@ import './Header.css'
 const Header = ({buttons, displayCards, favorites}) => {
 
   const handleClick = (button) => {
+    buttons.map(button => button.active = false)
     button.active = true;
     displayCards(button.name);
+  
   }
 
   const determineButton = (button) => {
