@@ -14,19 +14,35 @@ class App extends Component {
       favorites: [],
       buttons: [{name: 'people', active: false},
                 {name: 'planets', active: false},
-                {name: 'vehicles', active: false}]
+                {name: 'vehicles', active: false},
+                {name: 'favorites', active: false}]
     };
   };
 
+  addToFavorites = (card) => {
+    const favorites = this.state.favorites
+    this.setState({favorites: [...favorites, card]})
+  }
+
+  removeFromFavorites = (name) => {
+    let favorites = this.state.favorites
+    favorites = favorites.filter(favorite => favorite.name !== name)
+    this.setState({favorites})
+  }
+
+
   displayCards = async (type) => {
+    if (type !== 'favorites')
     try {
       const url = `https://swapi.co/api/${type}/`
       const response = await fetch(url);
       const data = await response.json();
-      this.setState({cards: this.fetchData(type, data)})
+      this.setState({cards: await this.fetchData(type, data)})
     } catch (error) {
       console.error(error)
     }
+    else 
+      this.setState({cards: this.state.favorites})
   }
 
   fetchData = (type, parsedData) => {
@@ -37,8 +53,6 @@ class App extends Component {
           return planets(parsedData)
       case 'vehicles':
           return vehicles(parsedData)
-      default:
-        console.log('error');
     }
   }
 
@@ -61,6 +75,12 @@ class App extends Component {
         <Header 
           buttons={this.state.buttons}
           displayCards={this.displayCards}
+          favorites={this.state.favorites}
+        />
+        <CardContainer
+          cards={this.state.cards}
+          addToFavorites={this.addToFavorites}
+          removeFromFavorites={this.removeFromFavorites}
         />
       </div>
     );
