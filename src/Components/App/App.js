@@ -15,7 +15,8 @@ class App extends Component {
       buttons: [{name: 'people', active: false},
                 {name: 'planets', active: false},
                 {name: 'vehicles', active: false},
-                {name: 'favorites', active: false}]
+                {name: 'favorites', active: false}],
+      error: ''
     };
   };
 
@@ -39,7 +40,7 @@ class App extends Component {
       const data = await response.json();
       this.setState({cards: await this.fetchData(type, data)})
     } catch (error) {
-      console.error(error)
+      this.setState({error})
     }
     else 
       this.setState({cards: this.state.favorites})
@@ -53,6 +54,8 @@ class App extends Component {
           return planets(parsedData)
       case 'vehicles':
           return vehicles(parsedData)
+      default: 
+          return console.error()
     }
   }
 
@@ -63,7 +66,7 @@ class App extends Component {
       const data = await response.json();
       this.setState({ scroll: scroll(data)})
     } catch (error) {
-      console.error(error)
+      this.setState({error})
     }
   };
 
@@ -81,6 +84,7 @@ class App extends Component {
           cards={this.state.cards}
           addToFavorites={this.addToFavorites}
           removeFromFavorites={this.removeFromFavorites}
+          error={this.state.error}
         />
       </div>
     );
