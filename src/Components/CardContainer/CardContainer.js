@@ -3,9 +3,9 @@ import './CardContainer.css'
 import PropTypes from 'prop-types'
 import Card from '../Card/Card'
 
-const CardContainer = ({cards, addToFavorites, removeFromFavorites}) => {
+const CardContainer = ({cards, error, addToFavorites, removeFromFavorites}) => {
 
-  const containerCards = cards.map((card, index) => {
+  const containerCards = cards.map((card, index, array) => {
     return (
       <Card
         card={card}
@@ -20,6 +20,15 @@ const CardContainer = ({cards, addToFavorites, removeFromFavorites}) => {
     return (
       <div className="card-container">
         {containerCards}
+      </div>
+    )
+  }
+
+  if (error) {
+    return (
+      <div className="card-container">
+        <p>{error.name}</p>
+        <p>{error.message}</p>
       </div>
     )
   }
