@@ -1,9 +1,20 @@
 
+export const getOpeningScroll = async () => {
+  try {
+    const url = 'https://swapi.co/api/films/'
+    const response = await fetch(url);
+    const data = await response.json();
+    return scroll(data)
+  } catch (error) {
+    console.error(error)
+  }
+}
+
 const getNumber = () => {
   return Math.floor(Math.random() * 7 + 1)
 }
 
-export const scroll = (data) => {
+const scroll = (data) => {
   const scrollInfo = data.results.reduce((scrollInfo, film) => {
       if (film.episode_id === getNumber()) {
         scrollInfo = {

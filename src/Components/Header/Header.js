@@ -1,9 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import './Header.css'
 
 const Header = ({buttons, displayCards, favorites}) => {
 
   const handleClick = (button) => {
+    buttons.map(button => button.active = false)
     button.active = true;
     displayCards(button.name);
   }
@@ -31,12 +33,18 @@ const Header = ({buttons, displayCards, favorites}) => {
     )
   })
 
-
 return (
   <div>
     {clickButtons}
   </div>
   )
 }
+
+Header.propTypes = {
+  buttons: PropTypes.array.isRequired,
+  displayCards: PropTypes.func.isRequired,
+  favorites: PropTypes.array.isRequired
+}
+
 
 export default Header;

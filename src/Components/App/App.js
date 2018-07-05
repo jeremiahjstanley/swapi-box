@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Scroll from '../Scroll/Scroll'
 import Header from '../Header/Header'
 import CardContainer from '../CardContainer/CardContainer'
-import { scroll, people, planets, vehicles } from './helper.js'
+import { getOpeningScroll, people, planets, vehicles } from './helper.js'
 import './App.css';
 
 class App extends Component {
@@ -16,7 +16,7 @@ class App extends Component {
                 {name: 'planets', active: false},
                 {name: 'vehicles', active: false},
                 {name: 'favorites', active: false}],
-      error: ''
+      error: '',
     };
   };
 
@@ -31,7 +31,6 @@ class App extends Component {
     this.setState({favorites})
   }
 
-
   displayCards = async (type) => {
     if (type !== 'favorites')
     try {
@@ -43,7 +42,7 @@ class App extends Component {
       this.setState({error})
     }
     else 
-      this.setState({cards: this.state.favorites})
+      this.setState({cards: this.state.favorites,})
   }
 
   fetchData = (type, parsedData) => {
@@ -60,14 +59,8 @@ class App extends Component {
   }
 
   async componentDidMount() {
-    try {
-      const url = 'https://swapi.co/api/films/'
-      const response = await fetch(url);
-      const data = await response.json();
-      this.setState({ scroll: scroll(data)})
-    } catch (error) {
-      this.setState({error})
-    }
+    const scroll = await getOpeningScroll()
+    this.setState({scroll})
   };
 
   render() {
