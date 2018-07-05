@@ -10,7 +10,11 @@ const Header = ({buttons, displayCards, favorites}) => {
 
   const determineButton = (button) => {
     if (button.name === 'favorites') {
-      return favorites.length
+      return (        
+        <p>
+         {favorites.length}
+        </p>
+      )
     }
   }
 
@@ -22,13 +26,10 @@ const Header = ({buttons, displayCards, favorites}) => {
         onClick={() => {handleClick(button)}}
       >
         {button.name}
-        <p>
-         {determineButton(button)}
-        </p>
+        {determineButton(button)}
       </button>
     )
   })
-
 
 
 return (
@@ -36,7 +37,6 @@ return (
     {clickButtons}
   </div>
   )
-
 }
 
 export default Header;
