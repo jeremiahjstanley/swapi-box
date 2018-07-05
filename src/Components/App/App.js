@@ -16,7 +16,8 @@ class App extends Component {
                 {name: 'planets', active: false},
                 {name: 'vehicles', active: false},
                 {name: 'favorites', active: false}],
-      error: '',
+      error: {},
+      displayFavorites: false,
     };
   };
 
@@ -42,7 +43,8 @@ class App extends Component {
       this.setState({error})
     }
     else 
-      this.setState({cards: this.state.favorites,})
+      this.setState({cards: this.state.favorites,
+                     displayFavorites: true})
   }
 
   fetchData = (type, parsedData) => {
@@ -74,10 +76,11 @@ class App extends Component {
           favorites={this.state.favorites}
         />
         <CardContainer
-          cards={this.state.cards}
           addToFavorites={this.addToFavorites}
-          removeFromFavorites={this.removeFromFavorites}
+          cards={this.state.cards}
+          displayFavorites={this.state.displayFavorites}
           error={this.state.error}
+          removeFromFavorites={this.removeFromFavorites}
         />
       </div>
     );
