@@ -1,23 +1,35 @@
 import React from 'react';
 import './CardContainer.css'
 import PropTypes from 'prop-types'
+import Card from '../Card/Card'
 
-const CardContainer = ({cards}) => {
+const CardContainer = ({cards, addToFavorites, removeFromFavorites}) => {
 
   const containerCards = cards.map((card, index) => {
     return (
       <Card
-        key={Date.now()}
-        {...card}
+        card={card}
+        key={index}
+        addToFavorites={addToFavorites}
+        removeFromFavorites={removeFromFavorites}
       />
     )
   })
 
-  return (
-    <div className="card-container">
-    {containerCards}
-    </div>
-  )
+  if (cards.length) {
+    return (
+      <div className="card-container">
+        {containerCards}
+      </div>
+    )
+  }
+
+  else 
+    return (
+      <div className="card-container">
+        <p>Click a button</p>
+      </div>
+    )
 }
 
 CardContainer.propTypes = {
