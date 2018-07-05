@@ -1,9 +1,11 @@
 
-
+const getNumber = () => {
+  return Math.floor(Math.random() * 7 + 1)
+}
 
 export const scroll = (data) => {
   const scrollInfo = data.results.reduce((scrollInfo, film) => {
-      if (film.title === "A New Hope") {
+      if (film.episode_id === getNumber()) {
         scrollInfo = {
                       title: film.title,
                       releaseDate: film.release_date,
@@ -16,22 +18,69 @@ export const scroll = (data) => {
 }
 
 export const people = (data) => {
-  const characters = data.results.map(character => {
+  const people = data.results.map(async person => {
+    const homeworld = await fetchData(person.homeworld)
+    const species = await fetchData(person.species)
     return {
-            name: character.name,
-            homeworld: character.homeworld,
-            species: character.species,
-            population: character.homeworld,
+            name: person.name,
+            homeworld: homeworld.name,
+            species: species.name,
+            population: homeworld.population,
             favorite: false
           }
   })
-  return characters;
+  return Promise.all(people);
+}
+
+const fetchData = async (url) => {
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error)
+  }
 }
 
 export const planets = (data) => {
-  console.log(data)
+  const planets = data.results.map(async planet => {
+    const residents = await fetchResidents(planet.residents)
+    return {
+      name: planet.name,
+      terrain: planet.terrain,
+      population: planet.population,
+      climate: planet.climate,
+      residents: residents,
+      favorite: false
+    }
+  })
+  return Promise.all(planets);
+}
+
+const fetchResidents = (residents) => {
+  const residentNames = residents.map(async resident => {
+    try {
+      const response = await fetch(resident);
+      const results = await response.json();
+      return results.name 
+    } catch (error) {
+      console.error(error)
+    }
+  })
+  return Promise.all(residentNames)
 }
 
 export const vehicles = (data) => {
-  console.log(data)
+  const vehicles = data.results.map(vehicle => {
+    return {
+            name: vehicle.name,
+            model: vehicle.model,
+            vehicleClass: vehicle.vehicle_class,
+            numberOfPassengers: parseInt(vehicle.crew, 10) + parseInt(vehicle.passengers, 10),
+            favorite: false
+          }  
+  })
+  return vehicles
 }
+
+
