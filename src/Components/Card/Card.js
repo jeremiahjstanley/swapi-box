@@ -11,7 +11,7 @@ const Card = ({card, addToFavorites, removeFromFavorites}) => {
 
   if (card.model) {
     return (
-      <div className="card">
+      <div className="card vehicleCard">
         <p>{card.name}</p>
         <p>{card.model}</p>
         <p>{card.vehicleClass}</p>
@@ -25,7 +25,7 @@ const Card = ({card, addToFavorites, removeFromFavorites}) => {
 
   if (card.terrain) {
     return (
-      <div className="card">
+      <div className="card planetCard">
         <p>{card.name}</p>
         <p>{card.terrain}</p>
         <p>{card.population}</p>
@@ -40,7 +40,7 @@ const Card = ({card, addToFavorites, removeFromFavorites}) => {
 
   if (card.homeworld) {
     return (
-      <div className="card">
+      <div className="card characterCard">
         <p>{card.name}</p>
         <p>{card.homeworld}</p>
         <p>{card.species}</p>
