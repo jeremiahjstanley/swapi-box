@@ -23,7 +23,7 @@ const Header = ({buttons, displayCards, favorites}) => {
   const clickButtons = buttons.map((button, index) => {
     return (
       <button
-        className={button.active ? 'button active' : 'button'}
+        className={button.active ? `button button${index} active` : `button button${index}`}
         key={index}
         onClick={() => {handleClick(button)}}
       >
