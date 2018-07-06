@@ -5,7 +5,7 @@ import Card from '../Card/Card'
 
 const CardContainer = ({cards, displayFavorites, error, addToFavorites, removeFromFavorites}) => {
 
-  const containerCards = cards.map((card, index, array) => {
+  const containerCards = cards.map((card, index) => {
     return (
       <Card
         card={card}
@@ -15,6 +15,15 @@ const CardContainer = ({cards, displayFavorites, error, addToFavorites, removeFr
       />
     )
   })
+
+  if (error.name) {
+    return (
+      <div className='card-container'>
+        <h2 className='error-header'>{error.name}</h2>
+        <p className='error-message'>{error.message}</p>
+      </div>
+    )
+  }
 
   if (cards.length) {
     return (
@@ -26,25 +35,18 @@ const CardContainer = ({cards, displayFavorites, error, addToFavorites, removeFr
 
   if (displayFavorites) {
     return (
-      <div className="card-container">
+      <div className='card-container'>
+        <p className='favorites-error'>
         You currently have no favorites
-      </div>
-    )
-  }
-
-  if (error.name) {
-    return (
-      <div className="card-container">
-        <p>{error.name}</p>
-        <p>{error.message}</p>
+        </p>
       </div>
     )
   }
 
   else 
     return (
-      <div className="card-container">
-        <p>Click a button</p>
+      <div className='card-container'>
+        <p className='instructions'>Click a button</p>
       </div>
     )
 }
