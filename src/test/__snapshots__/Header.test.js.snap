@@ -42,25 +42,25 @@ ShallowWrapper {
     "props": Object {
       "children": Array [
         <button
-          className="button"
+          className="button button0"
           onClick={[Function]}
 >
           people
 </button>,
         <button
-          className="button"
+          className="button button1"
           onClick={[Function]}
 >
           planets
 </button>,
         <button
-          className="button"
+          className="button button2"
           onClick={[Function]}
 >
           vehicles
 </button>,
         <button
-          className="button"
+          className="button button3"
           onClick={[Function]}
 >
           favorites
@@ -79,7 +79,7 @@ ShallowWrapper {
             "people",
             undefined,
           ],
-          "className": "button",
+          "className": "button button0",
           "onClick": [Function],
         },
         "ref": null,
@@ -98,7 +98,7 @@ ShallowWrapper {
             "planets",
             undefined,
           ],
-          "className": "button",
+          "className": "button button1",
           "onClick": [Function],
         },
         "ref": null,
@@ -117,7 +117,7 @@ ShallowWrapper {
             "vehicles",
             undefined,
           ],
-          "className": "button",
+          "className": "button button2",
           "onClick": [Function],
         },
         "ref": null,
@@ -136,7 +136,7 @@ ShallowWrapper {
             "favorites",
             <p />,
           ],
-          "className": "button",
+          "className": "button button3",
           "onClick": [Function],
         },
         "ref": null,
@@ -167,25 +167,25 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           <button
-            className="button"
+            className="button button0"
             onClick={[Function]}
 >
             people
 </button>,
           <button
-            className="button"
+            className="button button1"
             onClick={[Function]}
 >
             planets
 </button>,
           <button
-            className="button"
+            className="button button2"
             onClick={[Function]}
 >
             vehicles
 </button>,
           <button
-            className="button"
+            className="button button3"
             onClick={[Function]}
 >
             favorites
@@ -204,7 +204,7 @@ ShallowWrapper {
               "people",
               undefined,
             ],
-            "className": "button",
+            "className": "button button0",
             "onClick": [Function],
           },
           "ref": null,
@@ -223,7 +223,7 @@ ShallowWrapper {
               "planets",
               undefined,
             ],
-            "className": "button",
+            "className": "button button1",
             "onClick": [Function],
           },
           "ref": null,
@@ -242,7 +242,7 @@ ShallowWrapper {
               "vehicles",
               undefined,
             ],
-            "className": "button",
+            "className": "button button2",
             "onClick": [Function],
           },
           "ref": null,
@@ -261,7 +261,7 @@ ShallowWrapper {
               "favorites",
               <p />,
             ],
-            "className": "button",
+            "className": "button button3",
             "onClick": [Function],
           },
           "ref": null,
