@@ -1,5 +1,5 @@
 export const getNumber = () => {
-  return Math.round(Math.random() * 6 + 1)
+  return Math.floor(Math.random() * 7 + 1)
 }
 
 export const makeScroll = (data) => {
@@ -22,6 +22,7 @@ export const makePersonCard = (person) => {
           homeworld: person.homeworld.name,
           species: person.species.name,
           population: person.homeworld.population,
+          type: 'person',
           favorite: false
         }
 } 
@@ -33,6 +34,7 @@ export const makePlanetCard = (planet) => {
             population: planet.population,
             climate: planet.climate,
             residents: planet.residents,
+            type: 'planet',
             favorite: false
           }  
 } 
@@ -43,6 +45,7 @@ export const makeVehicleCard = (vehicle) => {
             model: vehicle.model,
             vehicleClass: vehicle.vehicle_class,
             numberOfPassengers: parseInt(vehicle.crew, 10) + parseInt(vehicle.passengers, 10),
+            type: 'vehicle',
             favorite: false
           }  
 } 
