@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Scroll from '../Scroll/Scroll'
 import Header from '../Header/Header'
 import CardContainer from '../CardContainer/CardContainer'
-import { getOpeningScroll, people, planets, vehicles } from './helper.js'
+import { getOpeningScroll, fetchData } from './api-calls'
 import './App.css';
 
 class App extends Component {
@@ -10,14 +10,16 @@ class App extends Component {
     super()
     this.state = {
       scroll: {},
-      cards: [],
       favorites: [],
+      vehicles: [],
+      people: [],
+      planets: [],
       buttons: [{name: 'people', active: false},
                 {name: 'planets', active: false},
                 {name: 'vehicles', active: false},
                 {name: 'favorites', active: false}],
       error: {},
-      displayFavorites: false,
+      cardType: 'people',
     };
   };
 
@@ -33,30 +35,18 @@ class App extends Component {
   }
 
   displayCards = async (type) => {
-    if (type !== 'favorites')
-    try {
-      const url = `https://swapi.co/api/${type}/`
-      const response = await fetch(url);
-      const data = await response.json();
-      this.setState({cards: await this.fetchData(type, data)})
+    if (!this.state[type].length && type !== 'favorites') {
+      try {
+      this.setState({[type]: await fetchData(type),
+                      cardType: type})
     } catch (error) {
       this.setState({error})
-    }
-    else 
+      }
+    } else if (type === 'favorites') {
       this.setState({cards: this.state.favorites,
-                     displayFavorites: true})
-  }
-
-  fetchData = (type, parsedData) => {
-        switch (type) {
-      case 'people':
-         return people(parsedData)
-      case 'planets':
-          return planets(parsedData)
-      case 'vehicles':
-          return vehicles(parsedData)
-      default: 
-          return console.error()
+                     cardType: type})
+    } else {
+      this.setState({cardType: type})
     }
   }
 
@@ -77,8 +67,8 @@ class App extends Component {
         />
         <CardContainer
           addToFavorites={this.addToFavorites}
-          cards={this.state.cards}
-          displayFavorites={this.state.displayFavorites}
+          cardType={this.state.cardType}
+          state={this.state}
           error={this.state.error}
           removeFromFavorites={this.removeFromFavorites}
         />
