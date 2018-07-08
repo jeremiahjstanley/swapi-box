@@ -1,4 +1,4 @@
-dimport { makePersonCard, makeVehicleCard, makePlanetCard } from './data-cleaner'
+import { makePersonCard, makeVehicleCard, makePlanetCard } from './data-cleaner'
 import { fetchHomeworld, fetchResidents, fetchSpecies} from './api-calls'
 
 export const  determineDataSet = (type, parsedData) => {
