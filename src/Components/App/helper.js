@@ -1,97 +1,48 @@
+import { makePersonCard, makeVehicleCard, makePlanetCard } from './data-cleaner'
+import { fetchHomeworld, fetchResidents, fetchSpecies} from './api-calls'
 
-export const getOpeningScroll = async () => {
-  try {
-    const url = 'https://swapi.co/api/films/'
-    const response = await fetch(url);
-    const data = await response.json();
-    return scroll(data)
-  } catch (error) {
-    console.error(error)
-  }
-}
-
-const getNumber = () => {
-  return Math.floor(Math.random() * 7 + 1)
-}
-
-const scroll = (data) => {
-  const scrollInfo = data.results.reduce((scrollInfo, film) => {
-      if (film.episode_id === getNumber()) {
-        scrollInfo = {
-                      title: film.title,
-                      releaseDate: film.release_date,
-                      scrollText: film.opening_crawl,
-                    }
-      }
-      return scrollInfo;
-  }, {});
-  return scrollInfo;
-}
-
-export const people = (data) => {
-  const people = data.results.map(async person => {
-    const homeworld = await fetchData(person.homeworld)
-    const species = await fetchData(person.species)
-    return {
-            name: person.name,
-            homeworld: homeworld.name,
-            species: species.name,
-            population: homeworld.population,
-            favorite: false
-          }
-  })
-  return Promise.all(people);
-}
-
-const fetchData = async (url) => {
-  try {
-    const response = await fetch(url);
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error(error)
-  }
-}
-
-export const planets = (data) => {
-  const planets = data.results.map(async planet => {
-    const residents = await fetchResidents(planet.residents)
-    return {
-      name: planet.name,
-      terrain: planet.terrain,
-      population: planet.population,
-      climate: planet.climate,
-      residents: residents,
-      favorite: false
+export const  determineDataSet = (type, parsedData) => {
+    switch (type) {
+  case 'people':
+     return people(parsedData)
+  case 'planets':
+      return planets(parsedData)
+  case 'vehicles':
+      return vehicles(parsedData)
+  default: 
+      return console.error()
     }
-  })
-  return Promise.all(planets);
 }
 
-const fetchResidents = (residents) => {
-  const residentNames = residents.map(async resident => {
-    try {
-      const response = await fetch(resident);
-      const results = await response.json();
-      return results.name 
-    } catch (error) {
-      console.error(error)
-    }
-  })
-  return Promise.all(residentNames)
+export const people = async (data) => {
+  const people = data.results
+  const cleanPeople = people.map(person => cleanPerson(person))
+  return Promise.all(cleanPeople)
+}
+
+export const planets = async (data) => {
+  const planets = data.results
+  const cleanPlanets = planets.map(planet => cleanPlanet(planet))
+  return Promise.all(cleanPlanets);
 }
 
 export const vehicles = (data) => {
-  const vehicles = data.results.map(vehicle => {
-    return {
-            name: vehicle.name,
-            model: vehicle.model,
-            vehicleClass: vehicle.vehicle_class,
-            numberOfPassengers: parseInt(vehicle.crew, 10) + parseInt(vehicle.passengers, 10),
-            favorite: false
-          }  
-  })
-  return vehicles
+  const vehicles = data.results
+  const cleanVehicles = vehicles.map(vehicle => makeVehicleCard(vehicle))
+  return Promise.all(cleanVehicles)
 }
+
+export const cleanPerson = async (person) => {
+  const cleanHomeworld = await fetchHomeworld(person.homeworld)
+  const cleanSpecies = await fetchSpecies(person.species)
+  return makePersonCard({...person, homeworld: cleanHomeworld, species: cleanSpecies})
+} 
+
+const cleanPlanet = async (planet) => {
+  const cleanResidents = await fetchResidents(planet.residents)
+  return makePlanetCard({...planet, residents: cleanResidents})
+}
+
+
 
 
