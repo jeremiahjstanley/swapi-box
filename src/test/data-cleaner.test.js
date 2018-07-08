@@ -1,8 +1,8 @@
 import { getNumber, makeScroll, makePersonCard, makePlanetCard, makeVehicleCard} from '../Components/App/data-cleaner'
 import { films } from '../data/mockFilms'
-import { people } from '../data/mockPeople'
-import { planets } from '../data/mockPlanets'
-import { vehicles } from '../data/mockVehicles'
+import { personInstance } from '../data/mockPeople'
+import { planetInstance } from '../data/mockPlanets'
+import { vehicleInstance } from '../data/mockVehicles'
 
 describe('data cleaner', () => {
   describe('getNumber', () => {
@@ -30,10 +30,10 @@ describe('data cleaner', () => {
   describe('makePersonCard', () => {
   
     it('should return an object', () => {
-      const expectedArguments = people
+      const expectedArguments = personInstance
 
       const actual = Object.keys(makePersonCard(expectedArguments))
-      const expected = ['name', 'homeworld', 'species', 'population', 'favorite']
+      const expected = ['name', 'homeworld', 'species', 'population', 'type', 'favorite']
 
       expect(actual).toEqual(expected)
     })
@@ -42,10 +42,10 @@ describe('data cleaner', () => {
   describe('makePlanetCard', () => {
   
     it('should return an object', () => {
-      const expectedArguments = planets
+      const expectedArguments = planetInstance
 
       const actual = Object.keys(makePlanetCard(expectedArguments))
-      const expected = ['name', 'terrain','population','climate', 'residents', 'favorite']
+      const expected = ['name', 'terrain','population','climate', 'residents', 'type', 'favorite']
 
       expect(actual).toEqual(expected)
     })
@@ -54,10 +54,10 @@ describe('data cleaner', () => {
   describe('makeVehicleCard', () => {
   
     it('should return an object', () => {
-      const expectedArguments = vehicles
+      const expectedArguments = vehicleInstance
 
       const actual = Object.keys(makeVehicleCard(expectedArguments))
-      const expected = ['name', 'model','vehicleClass','numberOfPassengers','favorite']
+      const expected = ['name', 'model','vehicleClass','numberOfPassengers', 'type', 'favorite']
 
       expect(actual).toEqual(expected)
     })
