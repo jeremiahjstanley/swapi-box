@@ -30,7 +30,7 @@ const Card = ({card, addToFavorites, removeFromFavorites}) => {
         <p>{card.terrain}</p>
         <p>{card.population}</p>
         <p>{card.climate}</p>
-        <p>{card.residents.join(", ")}</p>
+        <p>{card.residents.map(resident => resident.name + ', ')}</p>
         <button onClick={() => {handleClick(card)}}>
           Star
         </button>
