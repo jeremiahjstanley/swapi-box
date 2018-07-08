@@ -3,43 +3,65 @@ import { shallow } from 'enzyme';
 import CardContainer from '../Components/CardContainer/CardContainer';
 
 describe('CardContainer test', () => {
-  let mockCards;
-  let mockDisplayFavorites;
-  let mockError;
+  let mockState;
+  let mockCardType;
   let wrapper;
   let mockAddToFavorites;
   let mockRemoveFromFavorites;
 
 
   beforeEach(() => {
-    mockCards = [{}, {}, {}];
-    mockError = {};
-    mockDisplayFavorites = false;
+    mockState = { scroll: {},
+                  favorites: [],
+                  vehicles: [],
+                  people: [],
+                  planets: [],
+                  error: {},
+                  cardType: 'people',
+                }
+    mockCardType = 'favorites'
     mockAddToFavorites = jest.fn()
     mockRemoveFromFavorites = jest.fn()
-    wrapper = shallow(<CardContainer 
-                        cards={mockCards}
-                        error={mockError}
-                        displayFavorites={mockDisplayFavorites}
-                        addToFavorites={mockAddToFavorites}
-                        removeFromFavorites={mockRemoveFromFavorites}
-                      />);
   })
 
   it('should match the snapshot',() => {
     expect(wrapper).toMatchSnapshot();
   })
 
-  it('should render a message if the user has no favorites',() => {
-    mockCards = [];
-    mockDisplayFavorites = true;
+  it('should render cards',() => {
+    mockState = { scroll: {},
+                  favorites: [],
+                  vehicles: [],
+                  people: [{}, {}, {}, {}, {}],
+                  planets: [],
+                  error: {},
+                  cardType: 'people',
+                }
+    mockCardType = 'people'
     wrapper = shallow(<CardContainer 
-                        cards={mockCards}
-                        error={mockError}
-                        displayFavorites={mockDisplayFavorites}
-                        addToFavorites={mockAddToFavorites}
-                        removeFromFavorites={mockRemoveFromFavorites}
-                      />);
+                    state={mockState}
+                    cardType={mockCardType}
+                    addToFavorites={mockAddToFavorites}
+                    removeFromFavorites={mockRemoveFromFavorites}
+                  />);
+
+
+    const expected = 1;
+    const actual = wrapper.find('.full').length;
+
+    expect(expected).toEqual(actual);
+  })
+
+
+  it('should render a message if the user has no favorites',() => {
+    mockCardType = 'favorites'
+    wrapper = shallow(<CardContainer 
+                    state={mockState}
+                    cardType={mockCardType}
+                    addToFavorites={mockAddToFavorites}
+                    removeFromFavorites={mockRemoveFromFavorites}
+                  />);
+
 
     const expected = 1;
     const actual = wrapper.find('.favorites-error').length;
@@ -48,14 +70,20 @@ describe('CardContainer test', () => {
   })
 
   it('should render a error message if there is an error',() => {
-    mockError = {name: 'error name', message: 'error message'};
+    mockState = { scroll: {},
+              favorites: [],
+              vehicles: [],
+              people: [],
+              planets: [],
+              error: {name: 'error name', message: 'error message'},
+              cardType: 'people',
+            }
     wrapper = shallow(<CardContainer 
-                        cards={mockCards}
-                        error={mockError}
-                        displayFavorites={mockDisplayFavorites}
+                        state={mockState}
+                        cardType={mockCardType}
                         addToFavorites={mockAddToFavorites}
                         removeFromFavorites={mockRemoveFromFavorites}
-                      />);
+                  />);
 
     const expected = 1;
     const actual = wrapper.find('.error-header').length;
@@ -64,11 +92,10 @@ describe('CardContainer test', () => {
   })
 
   it('should render instructions on page load',() => {
-    mockCards = [];
+    mockCardType = 'people'
     wrapper = shallow(<CardContainer 
-                        cards={mockCards}
-                        error={mockError}
-                        displayFavorites={mockDisplayFavorites}
+                        state={mockState}
+                        cardType={mockCardType}
                         addToFavorites={mockAddToFavorites}
                         removeFromFavorites={mockRemoveFromFavorites}
                       />);
