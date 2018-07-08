@@ -9,21 +9,20 @@ const Card = ({card, addToFavorites, removeFromFavorites}) => {
     card.favorite ? addToFavorites(card) : removeFromFavorites(card.name);
   }
 
-  if (card.model) {
-    return (
-      <div className="card vehicleCard">
-        <p>{card.name}</p>
-        <p>{card.model}</p>
-        <p>{card.vehicleClass}</p>
-        <p>{card.numberOfPassengers}</p>
-        <button onClick={() => {handleClick(card)}}>
-          Star
-        </button>
-      </div>
-    )  
-  }
-
-  if (card.terrain) {
+  switch(card.type) {
+    case 'vehicle': 
+      return (
+        <div className="card vehicleCard">
+          <p>{card.name}</p>
+          <p>{card.model}</p>
+          <p>{card.vehicleClass}</p>
+          <p>{card.numberOfPassengers}</p>
+          <button onClick={() => {handleClick(card)}}>
+            Star
+          </button>
+        </div>
+      )
+  case 'planet':
     return (
       <div className="card planetCard">
         <p>{card.name}</p>
@@ -36,9 +35,7 @@ const Card = ({card, addToFavorites, removeFromFavorites}) => {
         </button>
       </div>
     )  
-  }
-
-  if (card.homeworld) {
+  case 'person':
     return (
       <div className="card characterCard">
         <p>{card.name}</p>
@@ -49,9 +46,10 @@ const Card = ({card, addToFavorites, removeFromFavorites}) => {
           Star
         </button>
       </div>
-    )  
+    )
+  default: 
+    return console.error()  
   }
-  
 }
 
 Card.propTypes = {
