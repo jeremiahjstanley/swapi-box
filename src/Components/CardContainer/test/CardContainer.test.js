@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import CardContainer from '../Components/CardContainer/CardContainer';
+import CardContainer from '../CardContainer';
 
 describe('CardContainer test', () => {
   let mockState;

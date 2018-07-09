@@ -1,9 +1,9 @@
-import { getOpeningScroll, fetchData, fetchHomeworld, fetchSpecies, fetchResidents } from '../Components/App/api-calls'
-import { films } from '../data/mockFilms'
-import { speciesInstance } from '../data/mockSpecies'
-import { personInstance, peopleFull } from '../data/mockPeople'
-import { planetInstance, planetsFulls } from '../data/mockPlanets'
-import { vehiclesFull } from '../data/mockVehicles'
+import { getOpeningScroll, fetchData, fetchHomeworld, fetchSpecies, fetchResidents } from '../api-calls'
+import { films } from '../../data/mockFilms'
+import { speciesInstance } from '../../data/mockSpecies'
+import { personInstance, peopleFull } from '../../data/mockPeople'
+import { planetInstance, planetsFulls } from '../../data/mockPlanets'
+import { vehiclesFull } from '../../data/mockVehicles'
 
 describe('API calls', () => {
   describe('getOpeningScroll', () => {

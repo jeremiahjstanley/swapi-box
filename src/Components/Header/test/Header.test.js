@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import Header from '../Components/Header/Header';
+import Header from '../Header';
 
 describe('Header Tests', () => {
   let wrapper;
@@ -41,19 +41,19 @@ describe('Header Tests', () => {
     expect(mockDisplayCards).toHaveBeenCalledWith(mockButton.name)
   })
 
-  it('should have a class of active when pressed', () => {
-    // wrapper = mount(<Header 
-    //                     buttons={mockButtons} 
-    //                     displayCards={mockDisplayCards}
-    //                     favorites={mockFavorites}
-    //                   />);    
+  it.skip('should have a class of active when pressed', () => {
+    wrapper = mount(<Header 
+                        buttons={mockButtons} 
+                        displayCards={mockDisplayCards}
+                        favorites={mockFavorites}
+                      />);    
 
-    // wrapper.find('.button1').simulate('click');
-    // wrapper.render()
+    wrapper.find('.button1').simulate('click');
+    wrapper.render()
 
-    // const expected = 1;
-    // const actual = wrapper.find('.active').length;
+    const expected = 1;
+    const actual = wrapper.find('.active').length;
 
-    // expect(actual).toEqual(expected);
+    expect(actual).toEqual(expected);
   })
 })
