@@ -1,6 +1,7 @@
 import React from 'react';
-import '../../reset.css'
-import './Scroll.css'
+import PropTypes from 'prop-types';
+import '../../reset.css';
+import './Scroll.css';
 
 const Scroll = ({scroll}) => {
   return (
@@ -10,6 +11,11 @@ const Scroll = ({scroll}) => {
       <p className='scroll-date'>{scroll.releaseDate}</p>
     </div>
   );
-}
+};
 
-export default Scroll
+Scroll.propTypes = {
+  scroll: PropTypes.object.isRequired
+};
+
+
+export default Scroll;
