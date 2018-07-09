@@ -1,0 +1,30 @@
+
+.header {
+  background-color: #222;
+  height: 15vh;
+  margin: auto
+}
+
+.button {
+  background: linear-gradient(#fff, #222, #222);
+  border-radius: 50px;
+  border: .1rem solid #fff;
+  color: #fff;
+  font-family: Helvetica;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 1rem;
+  padding: 1rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+span {
+  padding-left: .5rem;
+  color: #00aeef;
+}
+
+.active {
+  border: .1rem solid #00aeef; 
+  color: #00aeef; 
+}

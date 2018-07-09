@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types'
+import '../../reset.css'
 import './Header.css'
 
 const Header = ({buttons, displayCards, favorites}) => {
@@ -13,9 +14,9 @@ const Header = ({buttons, displayCards, favorites}) => {
   const determineButton = (button) => {
     if (button.name === 'favorites') {
       return (        
-        <p>
+        <span>
          {favorites.length}
-        </p>
+        </span>
       )
     }
   }
@@ -34,7 +35,7 @@ const Header = ({buttons, displayCards, favorites}) => {
   })
 
 return (
-  <div>
+  <div className='header'>
     {clickButtons}
   </div>
   )
