@@ -1,3 +1,18 @@
+export const people = jest.fn().mockImplementation(() => ({
+}))
+
+export const planets = jest.fn().mockImplementation(() => ({
+}))
+
+export const vehicles = jest.fn().mockImplementation(() => ({
+}))
+
+export const cleanPerson = jest.fn().mockImplementation(() => ({
+}))
+
+export const cleanPlanet = jest.fn().mockImplementation(() => ({
+}))
+
 export const makeVehicleCard = jest.fn().mockImplementation(() => ({
 }))
 
