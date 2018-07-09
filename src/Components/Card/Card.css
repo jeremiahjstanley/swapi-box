@@ -1,0 +1,55 @@
+h3 {
+  font-family: starjedi;
+  font-size: 3rem;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.card p {
+  font-family: helvetica;
+  font-size: 2rem;
+}
+
+.card {
+  border-radius: 18px;
+  border: solid #4F4C47 .25rem;
+  color: #4F4C47;
+  display: inline-block;
+  margin: 1rem;
+  padding: .5rem;
+  width: 350px;
+  height: 30vh;
+  text-overflow: wrap;
+}
+
+.card button {
+  background: linear-gradient(#fff, #222, #222);
+  border-radius: 50px;
+  border: .1rem solid #fff;
+  color: #fff;
+  font-family: arial;
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin: 1rem;
+  padding: 1rem;
+  text-align: center;
+  text-transform: uppercase;
+  width: 3.8rem;
+}
+
+.card .true {
+  border: .1rem solid #00aeef; 
+  color: #00aeef; 
+}
+
+.planetCard {
+  background-image: 
+}
+
+.characterCard {
+  background-image: 
+}
+
+.vehicleCard {
+  background-image: 
+}

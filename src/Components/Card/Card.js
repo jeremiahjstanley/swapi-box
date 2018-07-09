@@ -13,37 +13,46 @@ const Card = ({card, addToFavorites, removeFromFavorites}) => {
     case 'vehicle': 
       return (
         <div className="card vehicleCard">
-          <p>{card.name}</p>
+          <h3>{card.name}</h3>
           <p>{card.model}</p>
           <p>{card.vehicleClass}</p>
           <p>{card.numberOfPassengers}</p>
-          <button onClick={() => {handleClick(card)}}>
-            Star
+          <button 
+            onClick={() => {handleClick(card)}}
+            className={card.favorite.toString()}
+          >
+            &#9734;  
           </button>
         </div>
       )
   case 'planet':
     return (
       <div className="card planetCard">
-        <p>{card.name}</p>
+        <h3>{card.name}</h3>
         <p>{card.terrain}</p>
         <p>{card.population}</p>
         <p>{card.climate}</p>
         <p>{card.residents.map(resident => resident.name + ', ')}</p>
-        <button onClick={() => {handleClick(card)}}>
-          Star
+        <button 
+          onClick={() => {handleClick(card)}}
+          className={card.favorite.toString()}
+        >
+          &#9734;  
         </button>
       </div>
     )  
   case 'person':
     return (
       <div className="card characterCard">
-        <p>{card.name}</p>
+        <h3>{card.name}</h3>
         <p>{card.homeworld}</p>
         <p>{card.species}</p>
         <p>{card.population}</p>
-        <button onClick={() => {handleClick(card)}}>
-          Star
+        <button 
+          onClick={() => {handleClick(card)}}
+          className={card.favorite.toString()}
+        >
+          &#9734;
         </button>
       </div>
     )
