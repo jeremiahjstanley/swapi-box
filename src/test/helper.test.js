@@ -3,17 +3,26 @@ import { peopleFull, personInstance, personInstanceArray } from '../data/mockPeo
 import { planetsFull, planetInstance, planetInstanceArray } from '../data/mockPlanets'
 import { vehiclesFull, vehicleInstance, vehicleInstanceArray } from '../data/mockVehicles'
 
-jest.mock('../Components/App/helper')
 
 describe('helper', () => {
 
-  describe('determineDataSet', () => {
+  beforeEach(() => {
+    window.fetch = jest.fn().mockImplementation(() => 
+      Promise.resolve({
+        json: () => Promise.resolve(personInstanceArray),
+        ok: true
+    })) 
+  })
+
+  describe('determineDataSet', () => { 
 
     it('should invoke people with the correct arguments', () => {
       const type = 'people'
       const data = personInstanceArray
 
       determineDataSet(type, data)
+
+      jest.mock('../Components/App/helper')
 
       expect(people).toHaveBeenCalledWith(personInstanceArray);
     })
@@ -24,6 +33,8 @@ describe('helper', () => {
 
       determineDataSet(type, data)
 
+      jest.mock('../Components/App/helper')
+
      expect(planets).toHaveBeenCalledWith(planetInstanceArray);
     })
 
@@ -32,6 +43,8 @@ describe('helper', () => {
       const data = vehicleInstanceArray
 
       determineDataSet(type, data)
+
+      jest.mock('../Components/App/helper')
 
      expect(vehicles).toHaveBeenCalledWith(vehicleInstanceArray);
     })
@@ -49,16 +62,18 @@ describe('helper', () => {
 
       people(data)
 
+      jest.mock('../Components/App/helper')
+
       expect(cleanPerson).toHaveBeenCalledTimes(10);
     })
 
     it('should return a promise', async () => {
-      const expected = {favorite: false,
+      const expected = [{favorite: false,
                         homeworld: 'Tatooine',
                         name: 'Luke Skywalker',
                         population: '200000',
                         species: 'Human',
-                        type: 'person'}
+                        type: 'person'}]
 
       const actual = people(personInstanceArray)
 
@@ -71,6 +86,8 @@ describe('helper', () => {
       const data = planetsFull
 
       planet(data)
+
+      jest.mock('../Components/App/helper')
 
       expect(cleanPlanet).toHaveBeenCalledTimes(10);
     })
@@ -96,6 +113,8 @@ describe('helper', () => {
 
       vehicles(data)
 
+      jest.mock('../Components/App/helper')
+
       expect(makeVehicleCard).toHaveBeenCalledTimes(10);
     })
 
@@ -119,6 +138,8 @@ describe('helper', () => {
 
       cleanPerson(data)
 
+      jest.mock('../Components/App/helper')
+
       expect(fetchHomeworld).toHaveBeenCalled(personInstance.homeworld);
     })
 
@@ -127,6 +148,8 @@ describe('helper', () => {
 
       cleanPerson(data)
 
+      jest.mock('../Components/App/helper')
+
       expect(fetchSpecies).toHaveBeenCalled(personInstance.species);
     })
 
@@ -134,6 +157,8 @@ describe('helper', () => {
       const data = personInstance
 
       cleanPerson(data)
+
+      jest.mock('../Components/App/helper')
 
       expect(makePersonCard).toHaveBeenCalled();
     })
@@ -145,6 +170,8 @@ describe('helper', () => {
 
       cleanPlanet(data)
 
+      jest.mock('../Components/App/helper')
+
       expect(fetchResidents).toHaveBeenCalled(planetInstance.residents);
     })
 
@@ -152,6 +179,8 @@ describe('helper', () => {
       const data = planetInstance
 
       cleanPlanet(data)
+
+      jest.mock('../Components/App/helper')
 
       expect(makePlanetCard).toHaveBeenCalled();
     })
