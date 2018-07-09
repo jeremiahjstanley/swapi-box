@@ -30,6 +30,7 @@ describe('Card test', () => {
                 model: 'Digger Crawler',
                 name: 'Sand Crawler',
                 numberOfPassengers: 76,
+                type: 'vehicle',
                 vehicleClass: 'wheeled'
               }
     wrapper = shallow(<Card 
@@ -50,7 +51,8 @@ describe('Card test', () => {
                 name: 'Alderaan',
                 population: '2000000000',
                 residents: ['Leia Organa', 'Bail Prestor Organa' ,'Raymus Antilles'],
-                terrain: 'grasslands, mountains'
+                terrain: 'grasslands, mountains',
+                type: 'planet'
               }
     wrapper = shallow(<Card 
                     card={mockCard}
@@ -69,7 +71,8 @@ describe('Card test', () => {
                 homeworld: 'Tatooine',
                 name: 'Luke Skywalker',
                 population: '200000',
-                species: 'Human'
+                species: 'Human',
+                type: 'person'
               }
     wrapper = shallow(<Card 
                     card={mockCard}
@@ -88,6 +91,7 @@ describe('Card test', () => {
                 homeworld: 'Tatooine',
                 name: 'Luke Skywalker',
                 population: '200000',
+                type: 'person',
                 species: 'Human'
               }
     wrapper = shallow(<Card 
@@ -102,12 +106,13 @@ describe('Card test', () => {
     expect(mockAddToFavorites).toHaveBeenCalledWith(mockCard)
   })
 
-  it('should be able to add a character card to the favorites array', () => {
+  it('should be able to remove a character card to the favorites array', () => {
     mockCard = {
                 favorite: true,
                 homeworld: 'Tatooine',
                 name: 'Luke Skywalker',
                 population: '200000',
+                type: 'person',
                 species: 'Human'
               }
     wrapper = shallow(<Card 
@@ -129,7 +134,8 @@ describe('Card test', () => {
                 name: 'Alderaan',
                 population: '2000000000',
                 residents: ['Leia Organa', 'Bail Prestor Organa' ,'Raymus Antilles'],
-                terrain: 'grasslands, mountains'
+                terrain: 'grasslands, mountains',
+                type: 'planet'
               }
     wrapper = shallow(<Card 
                     card={mockCard}
@@ -143,14 +149,15 @@ describe('Card test', () => {
     expect(mockAddToFavorites).toHaveBeenCalledWith(mockCard)
   })
 
-  it('should be able to add a planet card to the favorites array', () => {
+  it('should be able to remove a planet card to the favorites array', () => {
     mockCard = {
                 climate: 'temperate',
                 favorite: true,
                 name: 'Alderaan',
                 population: '2000000000',
                 residents: ['Leia Organa', 'Bail Prestor Organa' ,'Raymus Antilles'],
-                terrain: 'grasslands, mountains'
+                terrain: 'grasslands, mountains',
+                type: 'planet'
               }
     wrapper = shallow(<Card 
                     card={mockCard}
@@ -170,6 +177,7 @@ describe('Card test', () => {
                 model: 'Digger Crawler',
                 name: 'Sand Crawler',
                 numberOfPassengers: 76,
+                type: 'vehicle',
                 vehicleClass: 'wheeled'
               }
     wrapper = shallow(<Card 
@@ -190,6 +198,7 @@ describe('Card test', () => {
                 model: 'Digger Crawler',
                 name: 'Sand Crawler',
                 numberOfPassengers: 76,
+                type: 'vehicle',
                 vehicleClass: 'wheeled'
               }
     wrapper = shallow(<Card 

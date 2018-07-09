@@ -3,9 +3,9 @@ import './CardContainer.css'
 import PropTypes from 'prop-types'
 import Card from '../Card/Card'
 
-const CardContainer = ({cards, displayFavorites, error, addToFavorites, removeFromFavorites}) => {
+const CardContainer = ({state, cardType, addToFavorites, removeFromFavorites}) => {
 
-  const containerCards = cards.map((card, index) => {
+  const containerCards = state[cardType].map((card, index) => {
     return (
       <Card
         card={card}
@@ -16,24 +16,24 @@ const CardContainer = ({cards, displayFavorites, error, addToFavorites, removeFr
     )
   })
 
-  if (error.name) {
+  if (state.error.name) {
     return (
       <div className='card-container'>
-        <h2 className='error-header'>{error.name}</h2>
-        <p className='error-message'>{error.message}</p>
+        <h2 className='error-header'>{state.error.name}</h2>
+        <p className='error-message'>{state.error.message}</p>
       </div>
     )
   }
 
-  if (cards.length) {
+  if (state[cardType].length) {
     return (
-      <div className="card-container">
+      <div className='card-container full'>
         {containerCards}
       </div>
     )
   }
 
-  if (displayFavorites) {
+  if (cardType === 'favorites') {
     return (
       <div className='card-container'>
         <p className='favorites-error'>
@@ -52,8 +52,8 @@ const CardContainer = ({cards, displayFavorites, error, addToFavorites, removeFr
 }
 
 CardContainer.propTypes = {
-  cards: PropTypes.array.isRequired,
-  displayFavorites: PropTypes.bool.isRequired,
+  state: PropTypes.object.isRequired,
+  cardType: PropTypes.string.isRequired,
   error: PropTypes.object,
   addToFavorites: PropTypes.func.isRequired,
   removeFromFavorites: PropTypes.func.isRequired
