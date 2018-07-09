@@ -1,5 +1,5 @@
 import { makeScroll } from './data-cleaner';
-import { determineDataSet } from './helper.js';
+import { determineDataSet } from './switch.js';
 
 export const getOpeningScroll = async () => {
   const url = 'https://swapi.co/api/films/';

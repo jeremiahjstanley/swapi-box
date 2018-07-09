@@ -1,8 +1,9 @@
 import React from 'react';
+import { fetchData } from '../../../api-calls/api-calls';
 import { shallow } from 'enzyme';
-import App from '../Components/App/App';
+import App from '../App';
 
-jest.mock('../Components/App/api-calls')
+jest.mock('../../../api-calls/api-calls')
 
 describe('App', () => {
   let wrapper; 
@@ -57,17 +58,17 @@ describe('App', () => {
     const expectedState = 'people'
     const actualState = wrapper.instance().state.cardType
 
-    // expect(fetchData).toHaveBeenCalled()
+    expect(fetchData).toHaveBeenCalled()
     expect(actualState).toBe(expectedState)
   });
 
-  it('displayCards should render an error message if there is an error', () => {
-    // wrapper.instance().displayCards('error')
+  it.skip('displayCards should render an error message if there is an error', () => {
+    wrapper.instance().displayCards('error')
 
-    // const expectedState = {name: 'Type of Error', message: 'Error Message'}
-    // const actualState = wrapper.instance().state.error
+    const expectedState = {name: 'Type of Error', message: 'Error Message'}
+    const actualState = wrapper.instance().state.error
 
-    // expect(actualState).toBe(expectedState)
+    expect(actualState).toBe(expectedState)
   });
 
   it('displayCards should display favorites if the favorites button is clicked', () => {

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Scroll from '../Scroll/Scroll';
 import Header from '../Header/Header';
 import CardContainer from '../CardContainer/CardContainer';
-import { getOpeningScroll, fetchData } from './api-calls';
+import { getOpeningScroll, fetchData } from '../../api-calls/api-calls';
 import './App.css';
 
 class App extends Component {

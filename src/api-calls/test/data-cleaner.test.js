@@ -1,10 +1,10 @@
-import { getNumber, makeScroll, makePersonCard, makePlanetCard, makeVehicleCard} from '../Components/App/data-cleaner'
-import { films } from '../data/mockFilms'
-import { personInstance } from '../data/mockPeople'
-import { planetInstance } from '../data/mockPlanets'
-import { vehicleInstance } from '../data/mockVehicles'
+import { getNumber, makeScroll, makePersonCard, makePlanetCard, makeVehicleCard} from '../data-cleaner'
+import { films } from '../../data/mockFilms'
+import { personInstance } from '../../data/mockPeople'
+import { planetInstance } from '../../data/mockPlanets'
+import { vehicleInstance } from '../../data/mockVehicles'
 
-describe('data cleaner', () => {
+describe('data-cleaner', () => {
   describe('getNumber', () => {
   
     it('should return an number', () => {

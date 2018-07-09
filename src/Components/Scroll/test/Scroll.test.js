@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Scroll from '../Components/Scroll/Scroll';
+import Scroll from '../Scroll';
 
 describe('Scroll Test', () => {
 
