@@ -1,20 +1,8 @@
-export const getNumber = () => {
-  return Math.floor(Math.random() * 7 + 1);
-};
-
-export const makeScroll = (parsedData) => {
-  const scrollInfo = parsedData.results.reduce((scrollInfo, film) => {
-    if (film.episode_id === getNumber()) {
-      scrollInfo = {
-        title: film.title,
-        releaseDate: film.release_date,
-        scrollText: film.opening_crawl
-      };
-    }
-    return scrollInfo;
-  }, {});
-  return scrollInfo;
-};
+export const makeScroll = (film) => (
+ {title: film.title,
+  releaseDate: film.release_date,
+  scrollText: film.opening_crawl}
+);
 
 export const makePersonCard = (person) => {
   return {

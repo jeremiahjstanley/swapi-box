@@ -10,7 +10,7 @@ describe('API calls', () => {
     let expectedArguments; 
 
     beforeEach(() => {
-      expectedArguments = 'https://swapi.co/api/films/';
+      expectedArguments = 'https://swapi.co/api/films/1';
 
       window.fetch = jest.fn().mockImplementation(() => 
         Promise.resolve({

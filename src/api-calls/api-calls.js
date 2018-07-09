@@ -2,7 +2,8 @@ import { makeScroll } from './data-cleaner';
 import { determineDataSet } from './switch.js';
 
 export const getOpeningScroll = async () => {
-  const url = 'https://swapi.co/api/films/';
+  const film = Math.floor(Math.random() * 7) + 1;
+  const url = `https://swapi.co/api/films/${film}/`;
   const response = await fetch(url);
   const parsedData = await response.json();
   return makeScroll(parsedData);
