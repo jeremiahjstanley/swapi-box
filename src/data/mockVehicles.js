@@ -44,7 +44,7 @@ export const vehicleInstanceArray = {results:
                                         }]
                                     }
 
-export const vehiclesFul = {
+export const vehiclesFull = {
     "count": 39,
     "next": "https://swapi.co/api/vehicles/?page=2",
     "previous": null,

@@ -1,28 +1,74 @@
-export const people = jest.fn().mockImplementation(() => ({
+export const determineDataSet = jest.fn().mockImplementation((type, parsedData) => {
+  switch (type) {
+    case 'people':
+      return people(parsedData);
+    case 'planets':
+      return planets(parsedData);
+    case 'vehicles':
+      return vehicles(parsedData);
+    default: 
+      throw new Error('Error');
+  }
+})
+
+export const people = jest.fn().mockImplementation((parsedData) => {
+  const people = parsedData.results;
+  const cleanPeople = people.map(person => cleanPerson(person));
+  return Promise.all(cleanPeople);
+})
+
+export const planets = jest.fn().mockImplementation((parsedData) => {
+  const planets = parsedData.results;
+  const cleanPlanets = planets.map(planet => cleanPlanet(planet));
+  return Promise.all(cleanPlanets);
+})
+
+export const vehicles = jest.fn().mockImplementation((parsedData) => {
+  const vehicles = parsedData.results;
+  const cleanVehicles = vehicles.map(vehicle => makeVehicleCard(vehicle));
+  return Promise.all(cleanVehicles);
+})
+
+export const cleanPerson = jest.fn().mockImplementation((person) => {
+  const cleanHomeworld = fetchHomeworld(person.homeworld);
+  const cleanSpecies = fetchSpecies(person.species);
+  return makePersonCard({...person, 
+    homeworld: cleanHomeworld, species: cleanSpecies});
+})
+
+export const cleanPlanet = jest.fn().mockImplementation((planet) => {
+  const cleanResidents = fetchResidents(planet.residents);
+  return makePlanetCard({...planet, residents: cleanResidents});
+})
+
+export const makeVehicleCard = jest.fn().mockImplementation((vehicle) => ({
+ "favorite": false,
+ "model": "Digger Crawler",
+  "name": "Sand Crawler",
+  "numberOfPassengers": 76,
+  "type": "vehicle",
+  "vehicleClass": "wheeled"
 }))
 
-export const planets = jest.fn().mockImplementation(() => ({
+export const makePlanetCard = jest.fn().mockImplementation((planet) => ({
+  "climate": "temperate",
+  "favorite": false,
+  "name": "Alderaan",
+  "population": "2000000000", 
+  "residents": ["https://swapi.co/api/people/5/"],
+  "terrain": "grasslands, mountains", "type": "planet"
 }))
 
-export const vehicles = jest.fn().mockImplementation(() => ({
+export const makePersonCard = jest.fn().mockImplementation((person) => ({
+  "favorite": false,
+  "homeworld": "Tatooine",
+  "name": "Luke Skywalker",
+  "population": "200000",
+  "species": "Human",
+  "type": "person"
 }))
 
-export const cleanPerson = jest.fn().mockImplementation(() => ({
-}))
-
-export const cleanPlanet = jest.fn().mockImplementation(() => ({
-}))
-
-export const makeVehicleCard = jest.fn().mockImplementation(() => ({
-}))
-
-export const makePlanetCard = jest.fn().mockImplementation(() => ({
-}))
-
-export const makePersonCard = jest.fn().mockImplementation(() => ({
-}))
-
-export const fetchSpecies = jest.fn().mockImplementation(() => ({
+export const fetchSpecies = jest.fn().mockImplementation((url) => ({
   "name": "Human",
   "classification": "mammal",
   "designation": "sentient",
@@ -84,7 +130,7 @@ export const fetchSpecies = jest.fn().mockImplementation(() => ({
   "url": "https://swapi.co/api/species/1/"
 }))
 
-export const fetchHomeworld = jest.fn().mockImplementation(() => ({
+export const fetchHomeworld = jest.fn().mockImplementation((url) => ({
   "name": "Alderaan",
   "rotation_period": "24",
   "orbital_period": "364",
@@ -106,8 +152,8 @@ export const fetchHomeworld = jest.fn().mockImplementation(() => ({
   "url": "https://swapi.co/api/planets/2/"
 }))
 
-export const fetchResidents = jest.fn().mockImplementation(() => ({
-  "name": "Luke Skywalker",
+export const fetchResidents = jest.fn().mockImplementation((array) => {
+  ["name": "Luke Skywalker",
   "height": "172",
   "mass": "77",
   "hair_color": "blond",
@@ -136,5 +182,5 @@ export const fetchResidents = jest.fn().mockImplementation(() => ({
   ],
   "created": "2014-12-09T13:50:51.644000Z",
   "edited": "2014-12-20T21:17:56.891000Z",
-  "url": "https://swapi.co/api/people/1/"
-}))
+  "url": "https://swapi.co/api/people/1/"]
+})

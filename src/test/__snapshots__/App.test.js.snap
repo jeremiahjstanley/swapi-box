@@ -21,7 +21,7 @@ ShallowWrapper {
         <h1
           className="app-header"
 >
-          SWAPI-Box
+          STAR WARS
 </h1>,
         <Scroll
           scroll={Object {}}
@@ -95,11 +95,11 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "host",
         "props": Object {
-          "children": "SWAPI-Box",
+          "children": "STAR WARS",
           "className": "app-header",
         },
         "ref": null,
-        "rendered": "SWAPI-Box",
+        "rendered": "STAR WARS",
         "type": "h1",
       },
       Object {
@@ -197,7 +197,7 @@ ShallowWrapper {
           <h1
             className="app-header"
 >
-            SWAPI-Box
+            STAR WARS
 </h1>,
           <Scroll
             scroll={Object {}}
@@ -271,11 +271,11 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "children": "SWAPI-Box",
+            "children": "STAR WARS",
             "className": "app-header",
           },
           "ref": null,
-          "rendered": "SWAPI-Box",
+          "rendered": "STAR WARS",
           "type": "h1",
         },
         Object {
