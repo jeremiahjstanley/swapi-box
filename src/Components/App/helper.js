@@ -1,7 +1,7 @@
 import { makePersonCard, makeVehicleCard, makePlanetCard } from './data-cleaner'
 import { fetchHomeworld, fetchResidents, fetchSpecies} from './api-calls'
 
-export const  determineDataSet = (type, parsedData) => {
+export const determineDataSet = (type, parsedData) => {
     switch (type) {
   case 'people':
      return people(parsedData)
@@ -10,7 +10,7 @@ export const  determineDataSet = (type, parsedData) => {
   case 'vehicles':
       return vehicles(parsedData)
   default: 
-      return console.error()
+      return console.log('error')
     }
 }
 
@@ -38,10 +38,11 @@ export const cleanPerson = async (person) => {
   return makePersonCard({...person, homeworld: cleanHomeworld, species: cleanSpecies})
 } 
 
-const cleanPlanet = async (planet) => {
+export const cleanPlanet = async (planet) => {
   const cleanResidents = await fetchResidents(planet.residents)
   return makePlanetCard({...planet, residents: cleanResidents})
 }
+
 
 
 
