@@ -52,10 +52,38 @@ ShallowWrapper {
 />,
         <CardContainer
           addToFavorites={[Function]}
-          cards={Array []}
-          displayFavorites={false}
+          cardType="people"
           error={Object {}}
           removeFromFavorites={[Function]}
+          state={
+                    Object {
+                              "buttons": Array [
+                                Object {
+                                  "active": false,
+                                  "name": "people",
+                                },
+                                Object {
+                                  "active": false,
+                                  "name": "planets",
+                                },
+                                Object {
+                                  "active": false,
+                                  "name": "vehicles",
+                                },
+                                Object {
+                                  "active": false,
+                                  "name": "favorites",
+                                },
+                              ],
+                              "cardType": "people",
+                              "error": Object {},
+                              "favorites": Array [],
+                              "people": Array [],
+                              "planets": Array [],
+                              "scroll": Object {},
+                              "vehicles": Array [],
+                            }
+          }
 />,
       ],
       "className": "App",
@@ -121,10 +149,36 @@ ShallowWrapper {
         "nodeType": "function",
         "props": Object {
           "addToFavorites": [Function],
-          "cards": Array [],
-          "displayFavorites": false,
+          "cardType": "people",
           "error": Object {},
           "removeFromFavorites": [Function],
+          "state": Object {
+            "buttons": Array [
+              Object {
+                "active": false,
+                "name": "people",
+              },
+              Object {
+                "active": false,
+                "name": "planets",
+              },
+              Object {
+                "active": false,
+                "name": "vehicles",
+              },
+              Object {
+                "active": false,
+                "name": "favorites",
+              },
+            ],
+            "cardType": "people",
+            "error": Object {},
+            "favorites": Array [],
+            "people": Array [],
+            "planets": Array [],
+            "scroll": Object {},
+            "vehicles": Array [],
+          },
         },
         "ref": null,
         "rendered": null,
@@ -174,10 +228,38 @@ ShallowWrapper {
 />,
           <CardContainer
             addToFavorites={[Function]}
-            cards={Array []}
-            displayFavorites={false}
+            cardType="people"
             error={Object {}}
             removeFromFavorites={[Function]}
+            state={
+                        Object {
+                                    "buttons": Array [
+                                      Object {
+                                        "active": false,
+                                        "name": "people",
+                                      },
+                                      Object {
+                                        "active": false,
+                                        "name": "planets",
+                                      },
+                                      Object {
+                                        "active": false,
+                                        "name": "vehicles",
+                                      },
+                                      Object {
+                                        "active": false,
+                                        "name": "favorites",
+                                      },
+                                    ],
+                                    "cardType": "people",
+                                    "error": Object {},
+                                    "favorites": Array [],
+                                    "people": Array [],
+                                    "planets": Array [],
+                                    "scroll": Object {},
+                                    "vehicles": Array [],
+                                  }
+            }
 />,
         ],
         "className": "App",
@@ -243,10 +325,36 @@ ShallowWrapper {
           "nodeType": "function",
           "props": Object {
             "addToFavorites": [Function],
-            "cards": Array [],
-            "displayFavorites": false,
+            "cardType": "people",
             "error": Object {},
             "removeFromFavorites": [Function],
+            "state": Object {
+              "buttons": Array [
+                Object {
+                  "active": false,
+                  "name": "people",
+                },
+                Object {
+                  "active": false,
+                  "name": "planets",
+                },
+                Object {
+                  "active": false,
+                  "name": "vehicles",
+                },
+                Object {
+                  "active": false,
+                  "name": "favorites",
+                },
+              ],
+              "cardType": "people",
+              "error": Object {},
+              "favorites": Array [],
+              "people": Array [],
+              "planets": Array [],
+              "scroll": Object {},
+              "vehicles": Array [],
+            },
           },
           "ref": null,
           "rendered": null,
