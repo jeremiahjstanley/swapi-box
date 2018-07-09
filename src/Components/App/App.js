@@ -43,8 +43,7 @@ class App extends Component {
         this.setState({error});
       }
     } else if (type === 'favorites') {
-      this.setState({cards: this.state.favorites,
-        cardType: type});
+      this.setState({cardType: type});
     } else {
       this.setState({cardType: type});
     }
