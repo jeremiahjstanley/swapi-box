@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import Scroll from '../Scroll/Scroll'
-import Header from '../Header/Header'
-import CardContainer from '../CardContainer/CardContainer'
-import { getOpeningScroll, fetchData } from './api-calls'
+import Scroll from '../Scroll/Scroll';
+import Header from '../Header/Header';
+import CardContainer from '../CardContainer/CardContainer';
+import { getOpeningScroll, fetchData } from './api-calls';
 import './App.css';
 
 class App extends Component {
   constructor() {
-    super()
+    super();
     this.state = {
       scroll: {},
       favorites: [],
@@ -15,45 +15,45 @@ class App extends Component {
       people: [],
       planets: [],
       buttons: [{name: 'people', active: false},
-                {name: 'planets', active: false},
-                {name: 'vehicles', active: false},
-                {name: 'favorites', active: false}],
+        {name: 'planets', active: false},
+        {name: 'vehicles', active: false},
+        {name: 'favorites', active: false}],
       error: {},
-      cardType: 'people',
+      cardType: 'people'
     };
-  };
+  }
 
   addToFavorites = (card) => {
-    const favorites = this.state.favorites
-    this.setState({favorites: [...favorites, card]})
+    const favorites = this.state.favorites;
+    this.setState({favorites: [...favorites, card]});
   }
 
   removeFromFavorites = (name) => {
-    let favorites = this.state.favorites
-    favorites = favorites.filter(favorite => favorite.name !== name)
-    this.setState({favorites})
+    let favorites = this.state.favorites;
+    favorites = favorites.filter(favorite => favorite.name !== name);
+    this.setState({favorites});
   }
 
   displayCards = async (type) => {
     if (!this.state[type].length && type !== 'favorites') {
       try {
-      this.setState({[type]: await fetchData(type),
-                      cardType: type})
-    } catch (error) {
-      this.setState({error})
+        this.setState({[type]: await fetchData(type),
+          cardType: type});
+      } catch (error) {
+        this.setState({error});
       }
     } else if (type === 'favorites') {
       this.setState({cards: this.state.favorites,
-                     cardType: type})
+        cardType: type});
     } else {
-      this.setState({cardType: type})
+      this.setState({cardType: type});
     }
   }
 
   async componentDidMount() {
-    const scroll = await getOpeningScroll()
-    this.setState({scroll})
-  };
+    const scroll = await getOpeningScroll();
+    this.setState({scroll});
+  }
 
   render() {
     return (
