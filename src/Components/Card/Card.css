@@ -1,25 +1,32 @@
 h3 {
   font-family: starjedi;
-  font-size: 3rem;
+  font-size: 2.5rem;
   color: #fff;
   text-transform: uppercase;
+  padding-left: 2.5rem;
+  text-align: left;
+  margin-top: 1rem;
 }
 
 .card p {
   font-family: helvetica;
-  font-size: 2rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin: 1rem 0;
+  padding-left: 5rem;
+  text-align: left;
 }
 
 .card {
   border-radius: 18px;
   border: solid #4F4C47 .25rem;
-  color: #4F4C47;
   display: inline-block;
-  margin: 1rem;
-  padding: .5rem;
-  width: 350px;
   height: 30vh;
-  text-overflow: wrap;
+  margin: 1rem;
+  overflow: scroll;
+  padding: .5rem;
+  text-align: left;
+  width: 350px;
 }
 
 .card button {
@@ -43,13 +50,19 @@ h3 {
 }
 
 .planetCard {
-  background-image: 
+  background-image: url('../../css-resources/planets.png');
+  background-size: cover;
+  background-blend-mode: overlay;
 }
 
 .characterCard {
-  background-image: 
+  background-image: url('../../css-resources/people.png');
+  background-size: cover;
+  background-blend-mode: overlay;
 }
 
 .vehicleCard {
-  background-image: 
+  background-image: url('../../css-resources/vehicles.png');
+  background-size: cover;
+  background-blend-mode: overlay;
 }
